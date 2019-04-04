@@ -2,7 +2,7 @@
  * Autor: Katarina Gresova, xgreso00
  * Datum: 01.04.2019
  * Name: main.cpp
- * Description: Entree file. Responsible for parsing command line arguments.
+ * Description: Entry file. Responsible for parsing command line arguments.
  */
 
 #include <iostream>
@@ -10,6 +10,8 @@
 #include <vector>
 #include <unistd.h>
 #include <stdio.h>
+#include <fstream>
+#include "huffman_static.h"
 
 using namespace std;
 
@@ -32,7 +34,7 @@ int main(int argc, char* argv[]) {
 	if (argc < 8) {
 		cerr << "Too few input arguments.\n";
 		help(argv);
-		exit(1);
+		return 1;
 	}
 
 	bool compress = false;
@@ -54,9 +56,9 @@ int main(int argc, char* argv[]) {
 			decompress = false;
 			break;
 		case 'h':
-			if (string("static").compare(optarg) == 0) {
+			if (string("static") == optarg) {
 				huffmanStatic = true;
-			} else if (string("adaptive").compare(optarg) == 0) {
+			} else if (string("adaptive") == optarg) {
 				huffmanAdaptive = true;
 			} else {
 				help(argv);
@@ -74,7 +76,7 @@ int main(int argc, char* argv[]) {
             break;
         default:
             help(argv);
-			exit(1);
+			return 1;
 	}
 
 	if (compress == decompress ||
@@ -86,14 +88,48 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 
-	FILE* inputFile = fopen(inputFileName.c_str(), "rb");
-	FILE* outputFile = fopen(outputFileName.c_str(), "wb");
+	ifstream inputFileStream;
+    inputFileStream.open(inputFileName.c_str(), ios::binary);
+    if (inputFileStream.fail()) {
+        cerr << "Unable to open input file." << endl;
+        return 1;
+    }
+
+    ofstream outputFileStream;
+    outputFileStream.open(outputFileName.c_str());
+    if(outputFileStream.fail()) {
+        inputFileStream.close();
+        cerr << "Unable to open output file" << endl;
+        return 1;
+    }
 
 	if (huffmanAdaptive) {
+//        if (compress) {
+//            compressAdaptive(inputFileName, outputFileName, model);
+//        } else {
+//            decompressAdaptive(inputFileName, outputFileName, model);
+//        }
+	} else {
+        if (compress) {
+            compressStatic(inputFileName, outputFileName, model);
+        } else {
+            decompressStatic(inputFileName, outputFileName, model);
+        }
+    }
 
-	}
+    u_int8_t value;
+    int i = 0;
+    char buf[sizeof(u_int8_t)];
+    while (inputFileStream.read(buf, sizeof(buf))) {
+        memcpy(&value, buf, sizeof(value));
+        cout << value << " ";
+        i++;
+        outputFileStream.write(buf, sizeof(buf));
+    }
 
-	fclose(inputFile);
-	fclose(outputFile);
-	exit(0);
+    cout << endl << "Total count: " << i << endl;
+
+    inputFileStream.close();
+	outputFileStream.close();
+	return 0;
 }

@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/katarina/Documents/repositories/huffman/huffman_static.cpp
+huffman_static.h
+/Users/katarina/Documents/repositories/huffman/huffman_static.h
+iostream
+-
+string
+-
+queue
+-
+fstream
+-
+map
+-
+
+/Users/katarina/Documents/repositories/huffman/huffman_static.h
+string
+-
+
+/Users/katarina/Documents/repositories/huffman/main.cpp
+iostream
+-
+string
+-
+vector
+-
+unistd.h
+-
+stdio.h
+-
+fstream
+-
+huffman_static.h
+/Users/katarina/Documents/repositories/huffman/huffman_static.h
+
+/Users/katarina/Documents/repositories/huffman/node.cpp
+
+/Users/katarina/Documents/repositories/huffman/tree.cpp
+
