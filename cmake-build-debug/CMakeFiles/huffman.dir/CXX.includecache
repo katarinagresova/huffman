@@ -6,21 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/Users/katarina/Documents/repositories/huffman/huffman_static.cpp
-huffman_static.h
-/Users/katarina/Documents/repositories/huffman/huffman_static.h
+/Users/katarina/Documents/repositories/huffman/huffman.cpp
 iostream
+-
+fstream
 -
 string
 -
 queue
 -
-fstream
--
 map
 -
+iomanip
+-
+cctype
+-
 
-/Users/katarina/Documents/repositories/huffman/huffman_static.h
+/Users/katarina/Documents/repositories/huffman/huffman.hpp
 string
 -
 
@@ -37,10 +39,6 @@ stdio.h
 -
 fstream
 -
-huffman_static.h
-/Users/katarina/Documents/repositories/huffman/huffman_static.h
-
-/Users/katarina/Documents/repositories/huffman/node.cpp
-
-/Users/katarina/Documents/repositories/huffman/tree.cpp
+huffman.hpp
+/Users/katarina/Documents/repositories/huffman/huffman.hpp
 

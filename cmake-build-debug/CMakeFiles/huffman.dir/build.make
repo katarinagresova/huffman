@@ -81,95 +81,43 @@ CMakeFiles/huffman.dir/main.cpp.o.provides: CMakeFiles/huffman.dir/main.cpp.o.re
 CMakeFiles/huffman.dir/main.cpp.o.provides.build: CMakeFiles/huffman.dir/main.cpp.o
 
 
-CMakeFiles/huffman.dir/node.cpp.o: CMakeFiles/huffman.dir/flags.make
-CMakeFiles/huffman.dir/node.cpp.o: ../node.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/katarina/Documents/repositories/huffman/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/huffman.dir/node.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/huffman.dir/node.cpp.o -c /Users/katarina/Documents/repositories/huffman/node.cpp
+CMakeFiles/huffman.dir/huffman.cpp.o: CMakeFiles/huffman.dir/flags.make
+CMakeFiles/huffman.dir/huffman.cpp.o: ../huffman.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/katarina/Documents/repositories/huffman/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/huffman.dir/huffman.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/huffman.dir/huffman.cpp.o -c /Users/katarina/Documents/repositories/huffman/huffman.cpp
 
-CMakeFiles/huffman.dir/node.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/huffman.dir/node.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/katarina/Documents/repositories/huffman/node.cpp > CMakeFiles/huffman.dir/node.cpp.i
+CMakeFiles/huffman.dir/huffman.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/huffman.dir/huffman.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/katarina/Documents/repositories/huffman/huffman.cpp > CMakeFiles/huffman.dir/huffman.cpp.i
 
-CMakeFiles/huffman.dir/node.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/huffman.dir/node.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/katarina/Documents/repositories/huffman/node.cpp -o CMakeFiles/huffman.dir/node.cpp.s
+CMakeFiles/huffman.dir/huffman.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/huffman.dir/huffman.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/katarina/Documents/repositories/huffman/huffman.cpp -o CMakeFiles/huffman.dir/huffman.cpp.s
 
-CMakeFiles/huffman.dir/node.cpp.o.requires:
+CMakeFiles/huffman.dir/huffman.cpp.o.requires:
 
-.PHONY : CMakeFiles/huffman.dir/node.cpp.o.requires
+.PHONY : CMakeFiles/huffman.dir/huffman.cpp.o.requires
 
-CMakeFiles/huffman.dir/node.cpp.o.provides: CMakeFiles/huffman.dir/node.cpp.o.requires
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/node.cpp.o.provides.build
-.PHONY : CMakeFiles/huffman.dir/node.cpp.o.provides
+CMakeFiles/huffman.dir/huffman.cpp.o.provides: CMakeFiles/huffman.dir/huffman.cpp.o.requires
+	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/huffman.cpp.o.provides.build
+.PHONY : CMakeFiles/huffman.dir/huffman.cpp.o.provides
 
-CMakeFiles/huffman.dir/node.cpp.o.provides.build: CMakeFiles/huffman.dir/node.cpp.o
-
-
-CMakeFiles/huffman.dir/tree.cpp.o: CMakeFiles/huffman.dir/flags.make
-CMakeFiles/huffman.dir/tree.cpp.o: ../tree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/katarina/Documents/repositories/huffman/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/huffman.dir/tree.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/huffman.dir/tree.cpp.o -c /Users/katarina/Documents/repositories/huffman/tree.cpp
-
-CMakeFiles/huffman.dir/tree.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/huffman.dir/tree.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/katarina/Documents/repositories/huffman/tree.cpp > CMakeFiles/huffman.dir/tree.cpp.i
-
-CMakeFiles/huffman.dir/tree.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/huffman.dir/tree.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/katarina/Documents/repositories/huffman/tree.cpp -o CMakeFiles/huffman.dir/tree.cpp.s
-
-CMakeFiles/huffman.dir/tree.cpp.o.requires:
-
-.PHONY : CMakeFiles/huffman.dir/tree.cpp.o.requires
-
-CMakeFiles/huffman.dir/tree.cpp.o.provides: CMakeFiles/huffman.dir/tree.cpp.o.requires
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/tree.cpp.o.provides.build
-.PHONY : CMakeFiles/huffman.dir/tree.cpp.o.provides
-
-CMakeFiles/huffman.dir/tree.cpp.o.provides.build: CMakeFiles/huffman.dir/tree.cpp.o
-
-
-CMakeFiles/huffman.dir/huffman_static.cpp.o: CMakeFiles/huffman.dir/flags.make
-CMakeFiles/huffman.dir/huffman_static.cpp.o: ../huffman_static.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/katarina/Documents/repositories/huffman/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/huffman.dir/huffman_static.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/huffman.dir/huffman_static.cpp.o -c /Users/katarina/Documents/repositories/huffman/huffman_static.cpp
-
-CMakeFiles/huffman.dir/huffman_static.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/huffman.dir/huffman_static.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/katarina/Documents/repositories/huffman/huffman_static.cpp > CMakeFiles/huffman.dir/huffman_static.cpp.i
-
-CMakeFiles/huffman.dir/huffman_static.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/huffman.dir/huffman_static.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/katarina/Documents/repositories/huffman/huffman_static.cpp -o CMakeFiles/huffman.dir/huffman_static.cpp.s
-
-CMakeFiles/huffman.dir/huffman_static.cpp.o.requires:
-
-.PHONY : CMakeFiles/huffman.dir/huffman_static.cpp.o.requires
-
-CMakeFiles/huffman.dir/huffman_static.cpp.o.provides: CMakeFiles/huffman.dir/huffman_static.cpp.o.requires
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/huffman_static.cpp.o.provides.build
-.PHONY : CMakeFiles/huffman.dir/huffman_static.cpp.o.provides
-
-CMakeFiles/huffman.dir/huffman_static.cpp.o.provides.build: CMakeFiles/huffman.dir/huffman_static.cpp.o
+CMakeFiles/huffman.dir/huffman.cpp.o.provides.build: CMakeFiles/huffman.dir/huffman.cpp.o
 
 
 # Object files for target huffman
 huffman_OBJECTS = \
 "CMakeFiles/huffman.dir/main.cpp.o" \
-"CMakeFiles/huffman.dir/node.cpp.o" \
-"CMakeFiles/huffman.dir/tree.cpp.o" \
-"CMakeFiles/huffman.dir/huffman_static.cpp.o"
+"CMakeFiles/huffman.dir/huffman.cpp.o"
 
 # External object files for target huffman
 huffman_EXTERNAL_OBJECTS =
 
 huffman: CMakeFiles/huffman.dir/main.cpp.o
-huffman: CMakeFiles/huffman.dir/node.cpp.o
-huffman: CMakeFiles/huffman.dir/tree.cpp.o
-huffman: CMakeFiles/huffman.dir/huffman_static.cpp.o
+huffman: CMakeFiles/huffman.dir/huffman.cpp.o
 huffman: CMakeFiles/huffman.dir/build.make
 huffman: CMakeFiles/huffman.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/katarina/Documents/repositories/huffman/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable huffman"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/katarina/Documents/repositories/huffman/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable huffman"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/huffman.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -178,9 +126,7 @@ CMakeFiles/huffman.dir/build: huffman
 .PHONY : CMakeFiles/huffman.dir/build
 
 CMakeFiles/huffman.dir/requires: CMakeFiles/huffman.dir/main.cpp.o.requires
-CMakeFiles/huffman.dir/requires: CMakeFiles/huffman.dir/node.cpp.o.requires
-CMakeFiles/huffman.dir/requires: CMakeFiles/huffman.dir/tree.cpp.o.requires
-CMakeFiles/huffman.dir/requires: CMakeFiles/huffman.dir/huffman_static.cpp.o.requires
+CMakeFiles/huffman.dir/requires: CMakeFiles/huffman.dir/huffman.cpp.o.requires
 
 .PHONY : CMakeFiles/huffman.dir/requires
 

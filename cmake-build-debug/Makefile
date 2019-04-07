@@ -123,32 +123,32 @@ huffman/fast:
 	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/build
 .PHONY : huffman/fast
 
-huffman_static.o: huffman_static.cpp.o
+huffman.o: huffman.cpp.o
 
-.PHONY : huffman_static.o
+.PHONY : huffman.o
 
 # target to build an object file
-huffman_static.cpp.o:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/huffman_static.cpp.o
-.PHONY : huffman_static.cpp.o
+huffman.cpp.o:
+	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/huffman.cpp.o
+.PHONY : huffman.cpp.o
 
-huffman_static.i: huffman_static.cpp.i
+huffman.i: huffman.cpp.i
 
-.PHONY : huffman_static.i
+.PHONY : huffman.i
 
 # target to preprocess a source file
-huffman_static.cpp.i:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/huffman_static.cpp.i
-.PHONY : huffman_static.cpp.i
+huffman.cpp.i:
+	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/huffman.cpp.i
+.PHONY : huffman.cpp.i
 
-huffman_static.s: huffman_static.cpp.s
+huffman.s: huffman.cpp.s
 
-.PHONY : huffman_static.s
+.PHONY : huffman.s
 
 # target to generate assembly for a file
-huffman_static.cpp.s:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/huffman_static.cpp.s
-.PHONY : huffman_static.cpp.s
+huffman.cpp.s:
+	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/huffman.cpp.s
+.PHONY : huffman.cpp.s
 
 main.o: main.cpp.o
 
@@ -177,60 +177,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-node.o: node.cpp.o
-
-.PHONY : node.o
-
-# target to build an object file
-node.cpp.o:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/node.cpp.o
-.PHONY : node.cpp.o
-
-node.i: node.cpp.i
-
-.PHONY : node.i
-
-# target to preprocess a source file
-node.cpp.i:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/node.cpp.i
-.PHONY : node.cpp.i
-
-node.s: node.cpp.s
-
-.PHONY : node.s
-
-# target to generate assembly for a file
-node.cpp.s:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/node.cpp.s
-.PHONY : node.cpp.s
-
-tree.o: tree.cpp.o
-
-.PHONY : tree.o
-
-# target to build an object file
-tree.cpp.o:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/tree.cpp.o
-.PHONY : tree.cpp.o
-
-tree.i: tree.cpp.i
-
-.PHONY : tree.i
-
-# target to preprocess a source file
-tree.cpp.i:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/tree.cpp.i
-.PHONY : tree.cpp.i
-
-tree.s: tree.cpp.s
-
-.PHONY : tree.s
-
-# target to generate assembly for a file
-tree.cpp.s:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/tree.cpp.s
-.PHONY : tree.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -240,18 +186,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... huffman"
-	@echo "... huffman_static.o"
-	@echo "... huffman_static.i"
-	@echo "... huffman_static.s"
+	@echo "... huffman.o"
+	@echo "... huffman.i"
+	@echo "... huffman.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... node.o"
-	@echo "... node.i"
-	@echo "... node.s"
-	@echo "... tree.o"
-	@echo "... tree.i"
-	@echo "... tree.s"
 .PHONY : help
 
 

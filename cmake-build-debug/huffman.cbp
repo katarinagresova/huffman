@@ -84,25 +84,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/katarina/Documents/repositories/huffman/huffman_static.cpp">
+		<Unit filename="/Users/katarina/Documents/repositories/huffman/huffman.cpp">
 			<Option target="huffman"/>
 		</Unit>
-		<Unit filename="/Users/katarina/Documents/repositories/huffman/huffman_static.h">
+		<Unit filename="/Users/katarina/Documents/repositories/huffman/huffman.hpp">
 			<Option target="huffman"/>
 		</Unit>
 		<Unit filename="/Users/katarina/Documents/repositories/huffman/main.cpp">
-			<Option target="huffman"/>
-		</Unit>
-		<Unit filename="/Users/katarina/Documents/repositories/huffman/node.cpp">
-			<Option target="huffman"/>
-		</Unit>
-		<Unit filename="/Users/katarina/Documents/repositories/huffman/node.hpp">
-			<Option target="huffman"/>
-		</Unit>
-		<Unit filename="/Users/katarina/Documents/repositories/huffman/tree.cpp">
-			<Option target="huffman"/>
-		</Unit>
-		<Unit filename="/Users/katarina/Documents/repositories/huffman/tree.hpp">
 			<Option target="huffman"/>
 		</Unit>
 		<Unit filename="/Users/katarina/Documents/repositories/huffman/CMakeLists.txt">

@@ -11,7 +11,8 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <fstream>
-#include "huffman_static.h"
+//#include "huffman_static.h"
+#include "huffman.hpp"
 
 using namespace std;
 
@@ -53,7 +54,7 @@ int main(int argc, char* argv[]) {
     		compress = true;
     		break;
 		case 'd':
-			decompress = false;
+			decompress = true;
 			break;
 		case 'h':
 			if (string("static") == optarg) {
@@ -88,20 +89,20 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 
-	ifstream inputFileStream;
-    inputFileStream.open(inputFileName.c_str(), ios::binary);
-    if (inputFileStream.fail()) {
-        cerr << "Unable to open input file." << endl;
-        return 1;
-    }
-
-    ofstream outputFileStream;
-    outputFileStream.open(outputFileName.c_str());
-    if(outputFileStream.fail()) {
-        inputFileStream.close();
-        cerr << "Unable to open output file" << endl;
-        return 1;
-    }
+//	ifstream inputFileStream;
+//    inputFileStream.open(inputFileName.c_str(), ios::binary);
+//    if (inputFileStream.fail()) {
+//        cerr << "Unable to open input file." << endl;
+//        return 1;
+//    }
+//
+//    ofstream outputFileStream;
+//    outputFileStream.open(outputFileName.c_str());
+//    if(outputFileStream.fail()) {
+//        inputFileStream.close();
+//        cerr << "Unable to open output file" << endl;
+//        return 1;
+//    }
 
 	if (huffmanAdaptive) {
 //        if (compress) {
@@ -111,25 +112,25 @@ int main(int argc, char* argv[]) {
 //        }
 	} else {
         if (compress) {
-            compressStatic(inputFileName, outputFileName, model);
+            encoder(inputFileName, outputFileName, model);
         } else {
-            decompressStatic(inputFileName, outputFileName, model);
+            decoder(inputFileName, outputFileName, model);
         }
     }
 
-    u_int8_t value;
-    int i = 0;
-    char buf[sizeof(u_int8_t)];
-    while (inputFileStream.read(buf, sizeof(buf))) {
-        memcpy(&value, buf, sizeof(value));
-        cout << value << " ";
-        i++;
-        outputFileStream.write(buf, sizeof(buf));
-    }
-
-    cout << endl << "Total count: " << i << endl;
-
-    inputFileStream.close();
-	outputFileStream.close();
+//    u_int8_t value;
+//    int i = 0;
+//    char buf[sizeof(u_int8_t)];
+//    while (inputFileStream.read(buf, sizeof(buf))) {
+//        memcpy(&value, buf, sizeof(value));
+//        cout << value << " ";
+//        i++;
+//        outputFileStream.write(buf, sizeof(buf));
+//    }
+//
+//    cout << endl << "Total count: " << i << endl;
+//
+//    inputFileStream.close();
+//	outputFileStream.close();
 	return 0;
 }

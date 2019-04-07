@@ -1,1 +1,1 @@
-/Library/Developer/CommandLineTools/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/huffman.dir/main.cpp.o CMakeFiles/huffman.dir/node.cpp.o CMakeFiles/huffman.dir/tree.cpp.o CMakeFiles/huffman.dir/huffman_static.cpp.o  -o huffman 
+/Library/Developer/CommandLineTools/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/huffman.dir/main.cpp.o CMakeFiles/huffman.dir/huffman.cpp.o  -o huffman 

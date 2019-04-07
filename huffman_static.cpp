@@ -38,7 +38,7 @@ struct comp {
 
 // traverse the Huffman Tree and store Huffman Codes
 // in a map.
-void storeHuffmanCodes(Node* root, string str, map<u_int8_t, string> &huffmanCode) {
+void storeHuffmanCodes(Node* root, string str, map<unsigned int, string> &huffmanCode) {
     if (root == nullptr)
         return;
 
@@ -47,29 +47,53 @@ void storeHuffmanCodes(Node* root, string str, map<u_int8_t, string> &huffmanCod
         huffmanCode[root->ch] = str;
     }
 
-    encode(root->left, str + "0", huffmanCode);
-    encode(root->right, str + "1", huffmanCode);
+    storeHuffmanCodes(root->left, str + "0", huffmanCode);
+    storeHuffmanCodes(root->right, str + "1", huffmanCode);
 }
 
-// traverse the Huffman Tree and decode the encoded string
-void decode(Node* root, int &index, string str) {
-    if (root == nullptr) {
-        return;
-    }
+//// traverse the Huffman Tree and decode the encoded string
+//void decode(Node* root, int &index, string str) {
+//    if (root == nullptr) {
+//        return;
+//    }
+//
+//    // found a leaf node
+//    if (!root->left && !root->right)
+//    {
+//        cout << root->ch;
+//        return;
+//    }
+//
+//    index++;
+//
+//    if (str[index] =='0')
+//        decode(root->left, index, str);
+//    else
+//        decode(root->right, index, str);
+//}
 
-    // found a leaf node
-    if (!root->left && !root->right)
+//char finder with given Huffman string
+//input : a Huffman string to traverse on the H. tree and
+//        a u. char by ref. to copy the char found
+//return: true if a char is found else false
+void decode(Node* curr, string s, unsigned char & c) {
+    for(unsigned int i=0;i<s.size();++i)
     {
-        cout << root->ch;
-        return;
+        if(s[i]=='0') //go to left in the H. tree
+            curr=curr->left;
+        if(s[i]=='1') //go to right in the H. tree
+            curr=curr->right;
     }
 
-    index++;
+    //bool found=false;
 
-    if (str[index] =='0')
-        decode(root->left, index, str);
-    else
-        decode(root->right, index, str);
+    if(!curr->left && !curr->right) //if it is a leaf node
+    {
+        //found=true;
+        c=curr->ch;
+    }
+
+    //return found;
 }
 
 
@@ -123,11 +147,18 @@ priority_queue<Node*, vector<Node*>, comp>* createHuffmanTree(map<u_int8_t, int>
     return pq;
 }
 
-string createHeader(map<u_int8_t, int> *freq) {
-    
+//string createHeader(map<u_int8_t, int> *freq) {
+//    for (int i=0; i<256; ++i) {
+//        //output char freq table to the output file
+//        //divide 32 bit u. int values into 4 bytes
+//        outfile.put(static_cast<unsigned char>(f[i]>>24));
+//        outfile.put(static_cast<unsigned char>((f[i]>>16)%256));
+//        outfile.put(static_cast<unsigned char>((f[i]>>8)%256));
+//        outfile.put(static_cast<unsigned char>(f[i]%256));
+//    }
+//
 
-
-}
+//}
 
 int compressStatic(string inputFileName, string outputFileName, bool model) {
 
@@ -146,12 +177,142 @@ int compressStatic(string inputFileName, string outputFileName, bool model) {
     map<u_int8_t, string> huffmanCode;
     storeHuffmanCodes(root, "", huffmanCode);
 
-    string header = createHeader(&freq);
+    //open the output file
+    ofstream outfile(outputFileName.c_str(), ios::out|ios::binary);
+    if(!outfile) {
+        cerr<<outputFileName<<" could not be opened!"<<endl;
+        exit(1);
+    }
+
+    for (int i=0; i<256; ++i) {
+        //output char freq table to the output file
+        //divide 32 bit u. int values into 4 bytes
+        outfile.put(static_cast<unsigned char>(freq[i]>>24));
+        outfile.put(static_cast<unsigned char>((freq[i]>>16)%256));
+        outfile.put(static_cast<unsigned char>((freq[i]>>8)%256));
+        outfile.put(static_cast<unsigned char>(freq[i]%256));
+    }
+
+    unsigned int total_chars=(*tp).get_freq();
+    cout<<"total chars to encode:"<<total_chars<<endl;
+
+
+    ifstream infile(inputFileName.c_str(), ios::in|ios::binary);
+    if(!infile)
+    {
+        cerr<<inputFileName<<" could not be opened!"<<endl;
+        exit(1);
+    }
+    //output Huffman coded chars into the output file
+    unsigned char ch2;
+    while(infile.get(c))
+    {
+        ch=c;
+
+        for () {
+            static unsigned char c;
+            if(i==1)
+                c=c | (i<<(7-bit_pos)); //add a 1 to the byte
+            else //i==0
+                c=c & static_cast<unsigned char>(255-(1<<(7-bit_pos))); //add a 0
+            ++bit_pos;
+            bit_pos%=8;
+            if(bit_pos==0)
+            {
+                outfile.put(c);
+                c='\0';
+            }
+        }
+
+
+//        //send the Huffman string to output file bit by bit
+//        for(unsigned int i=0;i<H_table[ch].size();++i)
+//        {
+//            if(H_table[ch].at(i)=='0')
+//                ch2=0;
+//            if(H_table[ch].at(i)=='1')
+//                ch2=1;
+//            huf_write(ch2, outfile);
+//        }
+    }
+
+    //send EOF
+    outfile.put('\0');
+
+
+    outfile.close();
+
+    //string header = createHeader(&freq);
 
     return 0;
 }
 
 int decompressStatic(string inputFileName, string outputFileName, bool model) {
+    ifstream infile(inputFileName.c_str(), ios::in|ios::binary);
+    if(!infile)
+    {
+        cerr<<inputFileName<<" could not be opened!"<<endl;
+        exit(1);
+    }
 
+    if(ifstream(outputFileName.c_str()))
+    {
+        cerr<<ofioutputFileNamele<<" already exists!"<<endl;
+        exit(1);
+    }
+
+    //open the output file
+    ofstream outfile(outputFileName.c_str(), ios::out|ios::binary);
+    if(!outfile)
+    {
+        cerr<<outputFileName<<" could not be opened!"<<endl;
+        exit(1);
+    }
+
+
+    //read frequency table from the input file
+    map<u_int8_t, int> freq;
+    char c;
+    unsigned char ch;
+    unsigned int j=1;
+    for (int i = 0; i < 256; i++) {
+        //read 4 bytes and combine them into one 32 bit u. int value
+        freq[i]=0;
+        for (int k=3; k >= 0; k--) {
+            infile.get(c);
+            ch=c;
+            freq[i]+=ch*(j<<(8*k));
+        }
+    }
+
+    Node* root = createHuffmanTree(&freq)->top();
+
+    //read Huffman strings from the input file
+    //find out the chars and write into the output file
+    string st;
+    unsigned char ch2;
+    unsigned int total_chars=(*root).freq;
+    cout<<"total chars to decode:"<<total_chars<<endl;
+    while(total_chars>0) //continue until no char left to decode
+    {
+        st=""; //current Huffman string
+        do
+        {
+            //read H. strings bit by bit
+            ch=huf_read(infile);
+            if(ch==0)
+                st=st+'0';
+            if(ch==1)
+                st=st+'1';
+        } //search the H. tree
+        while(!(*tp).decode(st, ch2)); //continue until a char is found
+
+        //output the char to the output file
+        outfile.put(static_cast<char>(ch2));
+        --total_chars;
+    }
+
+    infile.close();
+    outfile.close();
 }
 

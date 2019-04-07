@@ -7,10 +7,6 @@ include_directories(.)
 
 add_executable(huffman
         main.cpp
-        node.cpp
-        node.hpp
-        tree.cpp
-        tree.hpp
-        huffman_static.cpp
-        huffman_static.h
+        huffman.cpp
+        huffman.hpp
         )
