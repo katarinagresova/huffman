@@ -89,12 +89,21 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 
+	FILE *fp_in;
+	FILE *fp_out;
+
+
+
 	if (huffmanAdaptive) {
+		fp_in = fopen(inputFileName.c_str(), "rb");
+		fp_out = fopen(outputFileName.c_str(), "wb");
         if (compress) {
-            encoder_adaptive(inputFileName, outputFileName, model);
+            encoder_adaptive(fp_in, fp_out);
         } else {
-            decoder_adaptive(inputFileName, outputFileName, model);
+            decoder_adaptive(fp_in, fp_out);
         }
+		fclose(fp_in);
+		fclose(fp_out);
 	} else {
         if (compress) {
             encoder_static(inputFileName, outputFileName, model);

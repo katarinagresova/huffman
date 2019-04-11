@@ -110,34 +110,34 @@ do
 
   # # adaptive
 
-  # ./huff_codec -c -h adaptive -i ${refPath}original/${filename} -o ${refPath}/coded/adaptive-${filename}
-  # if [ "$?" != "0" ]
-  #   then echo -e "[${RED}Adaptive code BAD${NC}]"
-  #   exit
-  # fi
-  # ./huff_codec -d -h adaptive -i ${refPath}/coded/adaptive-${filename} -o ${refPath}/decoded/decode-adaptive-${filename}
-  # if [ "$?" != "0" ]
-  #   then echo -e "[${RED}Adaptive code BAD${NC}]"
-  #   exit
-  # fi
+   ./huff_codec -c -h adaptive -i ${refPath}original/${filename} -o ${refPath}/coded/adaptive-${filename}
+   if [ "$?" != "0" ]
+     then echo -e "[${RED}Adaptive code BAD${NC}]"
+     exit
+   fi
+   ./huff_codec -d -h adaptive -i ${refPath}/coded/adaptive-${filename} -o ${refPath}/decoded/decode-adaptive-${filename}
+   if [ "$?" != "0" ]
+     then echo -e "[${RED}Adaptive code BAD${NC}]"
+     exit
+   fi
 
-  # diff ${refPath}original/${filename} ${refPath}decoded/decode-adaptive-${filename}
+   diff ${refPath}original/${filename} ${refPath}decoded/decode-adaptive-${filename}
 
-  # if [ "$?" == "0" ]
-  #   then
-  #     origFileSize=$(wc -c <"${refPath}original/${filename}")
-  #     codeFileSize=$(wc -c <"${refPath}/coded/adaptive-${filename}")
-  #     if [ "$origFileSize" -ne 0 ] 
-  #       then
-  #         echo -e "[${filename}\t${GREEN}Adaptive    OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: $((100 - (100*$codeFileSize/$origFileSize)))%]"
-  #       else
-  #         echo -e "[${filename}\t${GREEN}Adaptive    OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: 0]"
-  #     fi
-  #     ((ok++))
-  #   else
-  #     echo -e "[${filename}\t${RED}Adaptive BAD${NC}]"
-  # fi
-  # ((total++))
+   if [ "$?" == "0" ]
+     then
+       origFileSize=$(wc -c <"${refPath}original/${filename}")
+       codeFileSize=$(wc -c <"${refPath}/coded/adaptive-${filename}")
+       if [ "$origFileSize" -ne 0 ]
+         then
+           echo -e "[${filename}\t${GREEN}Adaptive    OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: $((100 - (100*$codeFileSize/$origFileSize)))%]"
+         else
+           echo -e "[${filename}\t${GREEN}Adaptive    OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: 0]"
+       fi
+       ((ok++))
+     else
+       echo -e "[${filename}\t${RED}Adaptive BAD${NC}]"
+   fi
+   ((total++))
 
   # # adaptive model
 

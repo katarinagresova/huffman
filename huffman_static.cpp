@@ -5,16 +5,11 @@
 #include <map>
 #include <iomanip>
 #include <cctype>
+#include "huffman_static.hpp"
 
 #define EOF_VAL 2
 
 using namespace std;
-
-struct Node {
-    u_int8_t ch;
-    unsigned int freq;
-    Node *left, *right;
-};
 
 /**
  * Creating new tree node
@@ -24,8 +19,8 @@ struct Node {
  * @param right     pointer to Node on right
  * @return
  */
-Node* createNode(u_int8_t ch, unsigned int freq, Node *left, Node *right) {
-    Node* node = new Node();
+Node_static* createNode(u_int8_t ch, unsigned int freq, Node_static *left, Node_static *right) {
+    Node_static* node = new Node_static();
 
     node->ch = ch;
     node->freq = freq;
@@ -39,7 +34,7 @@ Node* createNode(u_int8_t ch, unsigned int freq, Node *left, Node *right) {
  * Comparison object to be used to order the heap
  */
 struct comp {
-    bool operator()(Node* l, Node* r) {
+    bool operator()(Node_static* l, Node_static* r) {
         // highest priority item has lowest frequency
         return l->freq > r->freq;
     }
@@ -52,7 +47,7 @@ struct comp {
  * @param c     reference where found character is copied
  * @return      true if a char is found, false otherwise
  */
-bool get_huf_char(Node* root, string s, u_int8_t& c) {
+bool get_huf_char(Node_static* root, string s, u_int8_t& c) {
 
     //we have only root
     if (!root->left && !root->right) {
@@ -60,7 +55,7 @@ bool get_huf_char(Node* root, string s, u_int8_t& c) {
         return true;
     }
 
-    Node* curr = root;
+    Node_static* curr = root;
     for (char i : s) {
         //go to left in the H. tree
         if (i == '0') {
@@ -139,8 +134,8 @@ u_int8_t huf_read(ifstream & infile) {
  * @param freq      array of frequencies for each 8b character
  * @return          priority queue
  */
-priority_queue<Node*, vector<Node*>, comp>* createHuffmanTree(unsigned int* freq) {
-    priority_queue<Node*, vector<Node*>, comp> *pq = new priority_queue<Node*, vector<Node*>, comp>();
+priority_queue<Node_static*, vector<Node_static*>, comp>* createHuffmanTree(unsigned int* freq) {
+    priority_queue<Node_static*, vector<Node_static*>, comp> *pq = new priority_queue<Node_static*, vector<Node_static*>, comp>();
 
     // Create a leaf node for each character and add it to the priority queue.
     for (unsigned int i = 0; i < 256; i++) {
@@ -152,8 +147,8 @@ priority_queue<Node*, vector<Node*>, comp>* createHuffmanTree(unsigned int* freq
     // do till there is more than one node in the queue
     while (pq->size() != 1) {
         // Remove the two nodes of highest priority lowest frequency) from the queue
-        Node *left = pq->top(); pq->pop();
-        Node *right = pq->top(); pq->pop();
+        Node_static *left = pq->top(); pq->pop();
+        Node_static *right = pq->top(); pq->pop();
 
         // Create a new internal node with these two nodes
         // as children and with frequency equal to the sum
@@ -172,7 +167,7 @@ priority_queue<Node*, vector<Node*>, comp>* createHuffmanTree(unsigned int* freq
  * @param str           current prefix of Huffman code
  * @param huffmanCode   map to store Huffman code for each character
  */
-void storeHuffmanCodes(Node* root, string str, map<u_int8_t, string> &huffmanCode) {
+void storeHuffmanCodes(Node_static* root, string str, map<u_int8_t, string> &huffmanCode) {
     if (root == nullptr)
         return;
 
@@ -210,6 +205,7 @@ void encoder_static(string ifile, string ofile, bool model) {
         exit(1);
     }
 
+    //input file was empty - do empty output and finish
     if (infile.peek() == ifstream::traits_type::eof()) {
         infile.close();
         outfile.close();
@@ -233,7 +229,7 @@ void encoder_static(string ifile, string ofile, bool model) {
     infile.clear(); //clear EOF flag
     infile.seekg(0); //reset get() pointer to beginning
 
-    Node* root = createHuffmanTree(f)->top();
+    Node_static* root = createHuffmanTree(f)->top();
 
     map<u_int8_t , string> H_table;
     storeHuffmanCodes(root, "", H_table);
@@ -292,7 +288,7 @@ void decoder_static(string ifile, string ofile, bool model) {
         exit(1);
     }
 
-
+    //input file was empty - do empty output and finish
     if (infile.peek() == ifstream::traits_type::eof()) {
         infile.close();
         outfile.close();
@@ -315,7 +311,7 @@ void decoder_static(string ifile, string ofile, bool model) {
         }
     }
 
-    Node* root = createHuffmanTree(f)->top();
+    Node_static* root = createHuffmanTree(f)->top();
 
     //read Huffman strings from the input file
     //find out the chars and write into the output file
