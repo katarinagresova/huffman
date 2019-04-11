@@ -37,8 +37,8 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/katarina/Documents/repositories/huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="huffman">
-				<Option output="/Users/katarina/Documents/repositories/huffman/cmake-build-debug/huffman" prefix_auto="0" extension_auto="0"/>
+			<Target title="huff_codec">
+				<Option output="/Users/katarina/Documents/repositories/huffman/cmake-build-debug/huff_codec" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/katarina/Documents/repositories/huffman/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -54,14 +54,14 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/katarina/Documents/repositories/huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 huffman"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/katarina/Documents/repositories/huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 huff_codec"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/katarina/Documents/repositories/huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/Users/katarina/Documents/repositories/huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/katarina/Documents/repositories/huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="huffman/fast">
-				<Option output="/Users/katarina/Documents/repositories/huffman/cmake-build-debug/huffman" prefix_auto="0" extension_auto="0"/>
+			<Target title="huff_codec/fast">
+				<Option output="/Users/katarina/Documents/repositories/huffman/cmake-build-debug/huff_codec" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/katarina/Documents/repositories/huffman/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -77,21 +77,27 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/katarina/Documents/repositories/huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 huffman/fast"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/katarina/Documents/repositories/huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 huff_codec/fast"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/katarina/Documents/repositories/huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/Users/katarina/Documents/repositories/huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/katarina/Documents/repositories/huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/katarina/Documents/repositories/huffman/huffman.cpp">
-			<Option target="huffman"/>
+		<Unit filename="/Users/katarina/Documents/repositories/huffman/huffman_adaptive.cpp">
+			<Option target="huff_codec"/>
 		</Unit>
-		<Unit filename="/Users/katarina/Documents/repositories/huffman/huffman.hpp">
-			<Option target="huffman"/>
+		<Unit filename="/Users/katarina/Documents/repositories/huffman/huffman_adaptive.hpp">
+			<Option target="huff_codec"/>
+		</Unit>
+		<Unit filename="/Users/katarina/Documents/repositories/huffman/huffman_static.cpp">
+			<Option target="huff_codec"/>
+		</Unit>
+		<Unit filename="/Users/katarina/Documents/repositories/huffman/huffman_static.hpp">
+			<Option target="huff_codec"/>
 		</Unit>
 		<Unit filename="/Users/katarina/Documents/repositories/huffman/main.cpp">
-			<Option target="huffman"/>
+			<Option target="huff_codec"/>
 		</Unit>
 		<Unit filename="/Users/katarina/Documents/repositories/huffman/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

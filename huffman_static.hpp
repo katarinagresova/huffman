@@ -8,7 +8,7 @@
 #include <string>
 using namespace std;
 
-void encoder(string ifile, string ofile, bool model);
-void decoder(string ifile, string ofile, bool model);
+void encoder_static(string ifile, string ofile, bool model);
+void decoder_static(string ifile, string ofile, bool model);
 
 #endif //HUFFMAN_HUFFMAN_HPP

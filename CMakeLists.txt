@@ -5,8 +5,9 @@ set(CMAKE_CXX_STANDARD 11)
 
 include_directories(.)
 
-add_executable(huffman
+add_executable(huff_codec
         main.cpp
-        huffman.cpp
-        huffman.hpp
-        )
+        huffman_static.cpp
+        huffman_static.hpp
+        huffman_adaptive.cpp
+        huffman_adaptive.hpp)

@@ -111,44 +111,71 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named huffman
+# Target rules for targets named huff_codec
 
 # Build rule for target.
-huffman: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 huffman
-.PHONY : huffman
+huff_codec: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 huff_codec
+.PHONY : huff_codec
 
 # fast build rule for target.
-huffman/fast:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/build
-.PHONY : huffman/fast
+huff_codec/fast:
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/build
+.PHONY : huff_codec/fast
 
-huffman.o: huffman.cpp.o
+huffman_adaptive.o: huffman_adaptive.cpp.o
 
-.PHONY : huffman.o
+.PHONY : huffman_adaptive.o
 
 # target to build an object file
-huffman.cpp.o:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/huffman.cpp.o
-.PHONY : huffman.cpp.o
+huffman_adaptive.cpp.o:
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/huffman_adaptive.cpp.o
+.PHONY : huffman_adaptive.cpp.o
 
-huffman.i: huffman.cpp.i
+huffman_adaptive.i: huffman_adaptive.cpp.i
 
-.PHONY : huffman.i
+.PHONY : huffman_adaptive.i
 
 # target to preprocess a source file
-huffman.cpp.i:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/huffman.cpp.i
-.PHONY : huffman.cpp.i
+huffman_adaptive.cpp.i:
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/huffman_adaptive.cpp.i
+.PHONY : huffman_adaptive.cpp.i
 
-huffman.s: huffman.cpp.s
+huffman_adaptive.s: huffman_adaptive.cpp.s
 
-.PHONY : huffman.s
+.PHONY : huffman_adaptive.s
 
 # target to generate assembly for a file
-huffman.cpp.s:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/huffman.cpp.s
-.PHONY : huffman.cpp.s
+huffman_adaptive.cpp.s:
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/huffman_adaptive.cpp.s
+.PHONY : huffman_adaptive.cpp.s
+
+huffman_static.o: huffman_static.cpp.o
+
+.PHONY : huffman_static.o
+
+# target to build an object file
+huffman_static.cpp.o:
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/huffman_static.cpp.o
+.PHONY : huffman_static.cpp.o
+
+huffman_static.i: huffman_static.cpp.i
+
+.PHONY : huffman_static.i
+
+# target to preprocess a source file
+huffman_static.cpp.i:
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/huffman_static.cpp.i
+.PHONY : huffman_static.cpp.i
+
+huffman_static.s: huffman_static.cpp.s
+
+.PHONY : huffman_static.s
+
+# target to generate assembly for a file
+huffman_static.cpp.s:
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/huffman_static.cpp.s
+.PHONY : huffman_static.cpp.s
 
 main.o: main.cpp.o
 
@@ -156,7 +183,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -165,7 +192,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -174,7 +201,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/huffman.dir/build.make CMakeFiles/huffman.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -185,10 +212,13 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... huffman"
-	@echo "... huffman.o"
-	@echo "... huffman.i"
-	@echo "... huffman.s"
+	@echo "... huff_codec"
+	@echo "... huffman_adaptive.o"
+	@echo "... huffman_adaptive.i"
+	@echo "... huffman_adaptive.s"
+	@echo "... huffman_static.o"
+	@echo "... huffman_static.i"
+	@echo "... huffman_static.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

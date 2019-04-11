@@ -4,7 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/katarina/Documents/repositories/huffman/huffman.cpp" "/Users/katarina/Documents/repositories/huffman/cmake-build-debug/CMakeFiles/huffman.dir/huffman.cpp.o"
+  "/Users/katarina/Documents/repositories/huffman/huffman_adaptive.cpp" "/Users/katarina/Documents/repositories/huffman/cmake-build-debug/CMakeFiles/huffman.dir/huffman_adaptive.cpp.o"
+  "/Users/katarina/Documents/repositories/huffman/huffman_static.cpp" "/Users/katarina/Documents/repositories/huffman/cmake-build-debug/CMakeFiles/huffman.dir/huffman_static.cpp.o"
   "/Users/katarina/Documents/repositories/huffman/main.cpp" "/Users/katarina/Documents/repositories/huffman/cmake-build-debug/CMakeFiles/huffman.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")

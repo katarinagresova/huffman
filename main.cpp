@@ -11,8 +11,8 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <fstream>
-//#include "huffman_static.h"
-#include "huffman.hpp"
+#include "huffman_static.hpp"
+#include "huffman_adaptive.hpp"
 
 using namespace std;
 
@@ -89,32 +89,17 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 
-//	ifstream inputFileStream;
-//    inputFileStream.open(inputFileName.c_str(), ios::binary);
-//    if (inputFileStream.fail()) {
-//        cerr << "Unable to open input file." << endl;
-//        return 1;
-//    }
-//
-//    ofstream outputFileStream;
-//    outputFileStream.open(outputFileName.c_str());
-//    if(outputFileStream.fail()) {
-//        inputFileStream.close();
-//        cerr << "Unable to open output file" << endl;
-//        return 1;
-//    }
-
 	if (huffmanAdaptive) {
-//        if (compress) {
-//            compressAdaptive(inputFileName, outputFileName, model);
-//        } else {
-//            decompressAdaptive(inputFileName, outputFileName, model);
-//        }
+        if (compress) {
+            encoder_adaptive(inputFileName, outputFileName, model);
+        } else {
+            decoder_adaptive(inputFileName, outputFileName, model);
+        }
 	} else {
         if (compress) {
-            encoder(inputFileName, outputFileName, model);
+            encoder_static(inputFileName, outputFileName, model);
         } else {
-            decoder(inputFileName, outputFileName, model);
+            decoder_static(inputFileName, outputFileName, model);
         }
     }
 
@@ -130,7 +115,5 @@ int main(int argc, char* argv[]) {
 //
 //    cout << endl << "Total count: " << i << endl;
 //
-//    inputFileStream.close();
-//	outputFileStream.close();
 	return 0;
 }
