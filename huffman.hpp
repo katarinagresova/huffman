@@ -5,7 +5,7 @@
 #ifndef HUFFMAN_HUFFMAN_HPP
 #define HUFFMAN_HUFFMAN_HPP
 
-#import <string>
+#include <string>
 using namespace std;
 
 void encoder(string ifile, string ofile, bool model);
