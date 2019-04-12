@@ -231,6 +231,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+model.o: model.cpp.o
+
+.PHONY : model.o
+
+# target to build an object file
+model.cpp.o:
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/model.cpp.o
+.PHONY : model.cpp.o
+
+model.i: model.cpp.i
+
+.PHONY : model.i
+
+# target to preprocess a source file
+model.cpp.i:
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/model.cpp.i
+.PHONY : model.cpp.i
+
+model.s: model.cpp.s
+
+.PHONY : model.s
+
+# target to generate assembly for a file
+model.cpp.s:
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/model.cpp.s
+.PHONY : model.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -252,6 +279,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... model.o"
+	@echo "... model.i"
+	@echo "... model.s"
 .PHONY : help
 
 

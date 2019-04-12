@@ -105,6 +105,12 @@
 		<Unit filename="/Users/katarina/Documents/repositories/huffman/main.cpp">
 			<Option target="huff_codec"/>
 		</Unit>
+		<Unit filename="/Users/katarina/Documents/repositories/huffman/model.cpp">
+			<Option target="huff_codec"/>
+		</Unit>
+		<Unit filename="/Users/katarina/Documents/repositories/huffman/model.hpp">
+			<Option target="huff_codec"/>
+		</Unit>
 		<Unit filename="/Users/katarina/Documents/repositories/huffman/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

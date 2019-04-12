@@ -6,6 +6,7 @@
 #include <iostream>
 #include "huffman_adaptive.hpp"
 #include "file_manipulation.hpp"
+#include "model.hpp"
 
 /* Creates the initial tree just containing the root node.
  * returns: a pointer to the root.
@@ -167,6 +168,9 @@ void encoder_adaptive(string ifile, string ofile, bool model) {
 
     u_int8_t currByte;
     while (fread(&currByte, sizeof(u_int8_t), 1, fp_in) > 0) {
+        if (model) {
+            currByte = modeling(currByte);
+        }
         Node *symbolTree = symbols[currByte];
 
         if (symbolTree) {
@@ -190,7 +194,7 @@ void encoder_adaptive(string ifile, string ofile, bool model) {
         }
     }
 
-    write_bit(2, fp_out);
+    write_bit(EOF_VAL, fp_out);
 
     fclose(fp_in);
     fclose(fp_out);
@@ -234,6 +238,9 @@ void decoder_adaptive(string ifile, string ofile, bool model) {
             c = currNode->symbol;
         }
 
+        if (model) {
+            c = demodeling(c);
+        }
         fwrite(&c, sizeof(unsigned char), 1, fp_out);
         updateTree(currNode, root);
     }
