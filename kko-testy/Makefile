@@ -24,14 +24,17 @@ default: huff_codec
 # To create the executable file count we need the object files
 # countwords.o, counter.o, and scanner.o:
 #
-huff_codec:  main.o huffman_static.o huffman_adaptive.o
-	$(CC) $(CFLAGS) -o huff_codec main.o huffman_static.o huffman_adaptive.o
+huff_codec:  main.o huffman_static.o huffman_adaptive.o file_manipulation.o
+	$(CC) $(CFLAGS) -o huff_codec main.o huffman_static.o huffman_adaptive.o file_manipulation.o
 
 huffman_static.o:  ../huffman_static.cpp
 	$(CC) $(CFLAGS) -c ../huffman_static.cpp ../huffman_static.hpp
 
 huffman_adaptive.o:  ../huffman_adaptive.cpp
 	$(CC) $(CFLAGS) -c ../huffman_adaptive.cpp ../huffman_adaptive.hpp
+
+file_manipulation.o:  ../file_manipulation.cpp
+	$(CC) $(CFLAGS) -c ../file_manipulation.cpp ../file_manipulation.hpp
 
 main.o:  ../main.cpp
 	$(CC) $(CFLAGS) -c ../main.cpp

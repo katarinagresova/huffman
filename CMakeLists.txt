@@ -10,4 +10,4 @@ add_executable(huff_codec
         huffman_static.cpp
         huffman_static.hpp
         huffman_adaptive.cpp
-        huffman_adaptive.hpp)
+        huffman_adaptive.hpp file_manipulation.cpp file_manipulation.hpp)

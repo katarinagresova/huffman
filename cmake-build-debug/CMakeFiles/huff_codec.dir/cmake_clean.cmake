@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/huff_codec.dir/main.cpp.o"
   "CMakeFiles/huff_codec.dir/huffman_static.cpp.o"
   "CMakeFiles/huff_codec.dir/huffman_adaptive.cpp.o"
+  "CMakeFiles/huff_codec.dir/file_manipulation.cpp.o"
   "huff_codec.pdb"
   "huff_codec"
 )

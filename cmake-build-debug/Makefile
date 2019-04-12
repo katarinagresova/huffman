@@ -123,6 +123,33 @@ huff_codec/fast:
 	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/build
 .PHONY : huff_codec/fast
 
+file_manipulation.o: file_manipulation.cpp.o
+
+.PHONY : file_manipulation.o
+
+# target to build an object file
+file_manipulation.cpp.o:
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/file_manipulation.cpp.o
+.PHONY : file_manipulation.cpp.o
+
+file_manipulation.i: file_manipulation.cpp.i
+
+.PHONY : file_manipulation.i
+
+# target to preprocess a source file
+file_manipulation.cpp.i:
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/file_manipulation.cpp.i
+.PHONY : file_manipulation.cpp.i
+
+file_manipulation.s: file_manipulation.cpp.s
+
+.PHONY : file_manipulation.s
+
+# target to generate assembly for a file
+file_manipulation.cpp.s:
+	$(MAKE) -f CMakeFiles/huff_codec.dir/build.make CMakeFiles/huff_codec.dir/file_manipulation.cpp.s
+.PHONY : file_manipulation.cpp.s
+
 huffman_adaptive.o: huffman_adaptive.cpp.o
 
 .PHONY : huffman_adaptive.o
@@ -213,6 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... huff_codec"
+	@echo "... file_manipulation.o"
+	@echo "... file_manipulation.i"
+	@echo "... file_manipulation.s"
 	@echo "... huffman_adaptive.o"
 	@echo "... huffman_adaptive.i"
 	@echo "... huffman_adaptive.s"

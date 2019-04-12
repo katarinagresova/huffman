@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/katarina/Documents/repositories/huffman/file_manipulation.cpp">
+			<Option target="huff_codec"/>
+		</Unit>
+		<Unit filename="/Users/katarina/Documents/repositories/huffman/file_manipulation.hpp">
+			<Option target="huff_codec"/>
+		</Unit>
 		<Unit filename="/Users/katarina/Documents/repositories/huffman/huffman_adaptive.cpp">
 			<Option target="huff_codec"/>
 		</Unit>
