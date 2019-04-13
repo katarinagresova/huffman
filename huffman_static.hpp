@@ -1,6 +1,9 @@
-//
-// Created by Katarina Gresova on 07/04/2019.
-//
+/**
+ * Author: Katarina Gresova, xgreso00
+ * Datum: 11.04.2019
+ * Name: huffman_static.hpp
+ * Description: Static Huffman coding.
+ */
 
 #ifndef HUFFMAN_HUFFMAN_HPP
 #define HUFFMAN_HUFFMAN_HPP

@@ -1,3 +1,10 @@
+/**
+ * Author: Katarina Gresova, xgreso00
+ * Datum: 12.04.2019
+ * Name: huffman_adaptive.cpp
+ * Description: Adaptive Huffman coding.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
@@ -8,8 +15,9 @@
 #include "file_manipulation.hpp"
 #include "model.hpp"
 
-/* Creates the initial tree just containing the root node.
- * returns: a pointer to the root.
+/**
+ * Creates initial tree containing only root
+ * @return  pointer to the root
  */
 Node* createTree() {
     Node *tree = new Node();
@@ -21,15 +29,14 @@ Node* createTree() {
     tree->right_child = nullptr;
 
     tree->weight = 0;
-    tree->order = SYMBOLS_COUNT * 2; /* generally 512 (considering char = 8 bits) */
-
+    tree->order = SYMBOLS_COUNT * 2;
     return tree;
 }
 
-/* Returns an array of integers (i.e. 0 and 1s) containing the code corresponding to the given node.
- * node: the tree node.
- * n: the number of digits in the array that will be returned.
- * returns an array of integers containing the code.
+/**
+ * Traverses tree from given node to root and stores code
+ * @param node  tree node to start from
+ * @return      stack of 0s a 1s corresponding to the code
  */
 stack<u_int8_t > codeOfNode(Node *node) {
     Node *current = node;
@@ -37,60 +44,62 @@ stack<u_int8_t > codeOfNode(Node *node) {
     stack<u_int8_t> code;
     while (current->parent != nullptr) {
         Node *parent = current->parent;
-        code.push((parent->left_child == current) ? 0 : 1);
+        code.push((parent->left_child == current) ? u_int8_t (0) : u_int8_t (1));
         current = current->parent;
     }
     return code;
 }
 
-/* Creates a new child.
- * parent: the parent node that will be created.
- * isZero: 1 if the node is a ZERO node, or 0 otherwise.
- * isRoot: 1 if the created node is a root node, or 0 otherwise.
- * symbol: the symbol attributed to the node.
- * value: the value attributed to the node.
- * order: the order attributed to the node.
- * returns: the created node.
+/**
+ *
+ * @param parent    parent of new node
+ * @param is_NYT    flag, if new node is NYT node
+ * @param symbol    symbol of new node
+ * @param weight    weight of new node
+ * @param order     order of new node
+ * @return          pointer to new node
  */
-Node* addChild(Node *parent, int isZero, u_int8_t symbol, int value, int order) {
+Node* addChild(Node *parent, bool is_NYT, u_int8_t symbol, int weight, int order) {
     Node *node = new Node();
-    node->is_NYT = isZero;
-    node->is_leaf = 1;
+    node->is_NYT = is_NYT;
+    node->is_leaf = true;
     node->parent = parent;
     node->left_child = nullptr;
     node->right_child = nullptr;
     node->symbol = symbol;
-    node->weight = value;
+    node->weight = weight;
     node->order = order;
     return node;
 }
 
-/* Adds a new symbol in the tree and in the array of symbols
- * symbol: the symbol that will be inserted
- * zeroNode: reference to where the node ZERO points to.
- * symbols: the array of symbols
- * returns: the leaf node's (that contains the added symbol) parent.
+/**
+ * Adds new symbol node too tree and adds it to symbols map
+ * @param symbol        new symbol
+ * @param NYT_node      reference to NYT_node
+ * @param symbols       map of symbols
+ * @return              parent of node with new symbol
  */
-Node* addSymbol(unsigned char symbol, Node **zeroNode, map<u_int8_t, Node*> &symbols) {
-    Node *leftNode = addChild(*zeroNode, 1, 0, 0, (*zeroNode)->order - 2);
-    Node *rightNode = addChild(*zeroNode, 0, symbol, 1, (*zeroNode)->order - 1);
+Node* addSymbol(u_int8_t symbol, Node **NYT_node, map<u_int8_t, Node*> &symbols) {
+    Node *leftNode = addChild(*NYT_node, true, 0, 0, (*NYT_node)->order - 2);
+    Node *rightNode = addChild(*NYT_node, false, symbol, 1, (*NYT_node)->order - 1);
 
-    Node *previousZeroNode = *zeroNode;
-    (*zeroNode)->is_NYT = 0;
-    (*zeroNode)->is_leaf = 0;
-    (*zeroNode)->left_child = leftNode;
-    (*zeroNode)->right_child = rightNode;
+    Node *previous_NYT_node = *NYT_node;
+    (*NYT_node)->is_NYT = 0;
+    (*NYT_node)->is_leaf = 0;
+    (*NYT_node)->left_child = leftNode;
+    (*NYT_node)->right_child = rightNode;
 
     symbols[symbol] = rightNode;
-    *zeroNode = leftNode;
+    *NYT_node = leftNode;
 
-    return previousZeroNode;
+    return previous_NYT_node;
 }
 
-/* Searches for the node that has the same value as the input node (with a maximum order value).
- * currMax: the input node.
- * root: the tree's root.
- * returns: the node that has the same value as the input node (with a maximum order value). if it doesn't exist, NULL is returned.
+/**
+ * Searches for the node that has the same weight as input node (with a maximum order value).
+ * @param currMax   node with highest weight so far
+ * @param root      root of tree
+ * @return          node with the same weight as input node, or null
  */
 Node* findReplaceNode(Node *currMax, Node *root) {
     Node *result = currMax;
@@ -108,8 +117,10 @@ Node* findReplaceNode(Node *currMax, Node *root) {
     return (result != currMax) ? result : nullptr;
 }
 
-/* Swap nodes.
- * Note: the orders are not swapped, since they are independent from the node's content.
+/**
+ * Swaps two nodes
+ * @param n1    first node
+ * @param n2    second node
  */
 void swapNodes(Node *n1, Node *n2) {
     int tempOrder = n1->order;
@@ -133,15 +144,15 @@ void swapNodes(Node *n1, Node *n2) {
     n2->parent = temp;
 }
 
-/* Updates the tree based on an initial node.
- * currNode: the starting node that will be updated.
- * root: the tree's root.
+/**
+ * Updates tree based on initial node
+ * @param currNode  starting node that will be updated
+ * @param root      root of tree
  */
 void updateTree(Node *currNode, Node *root) {
     while (currNode->parent != nullptr) {
         Node *replaceNode = findReplaceNode(currNode, root);
 
-        /* se replaceNode for o pai de currentNode, eles nao podem ser trocados */
         if (replaceNode && currNode->parent != replaceNode) {
             swapNodes(currNode, replaceNode);
         }
@@ -153,9 +164,11 @@ void updateTree(Node *currNode, Node *root) {
     (currNode->weight)++;
 }
 
-/* Encodes the file.
- * fp_in: the input file (the one that will be encoded).
- * fp_out: the output file.
+/**
+ * Adaptive Huffman encoder
+ * @param ifile     path to input file
+ * @param ofile     path to output file
+ * @param model     flag, if model will be used
  */
 void encoder_adaptive(string ifile, string ofile, bool model) {
 
@@ -200,9 +213,11 @@ void encoder_adaptive(string ifile, string ofile, bool model) {
     fclose(fp_out);
 }
 
-/* Decodes the file
- * fp_in: input file (the one that will be decoded)
- * fp_out: the output file
+/**
+ * Adaptive Huffman decoder
+ * @param ifile     path to input file
+ * @param ofile     path to output file
+ * @param model     flag, if model will be used
  */
 void decoder_adaptive(string ifile, string ofile, bool model) {
 

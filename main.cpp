@@ -1,6 +1,6 @@
 /**
- * Autor: Katarina Gresova, xgreso00
- * Datum: 01.04.2019
+ * Author: Katarina Gresova, xgreso00
+ * Datum: 03.04.2019
  * Name: main.cpp
  * Description: Entry file. Responsible for parsing command line arguments.
  */
@@ -16,6 +16,10 @@
 
 using namespace std;
 
+/**
+ * Prints help
+ * @param argv  array of command line arguments
+ */
 static void help(char* argv[]) {
     cerr << "Usage: " << argv[0] << " -c/-d -h static/adaptive -i <ifile> -o <ofile> [-m]\n"
          << "Options:\n"
@@ -30,6 +34,12 @@ static void help(char* argv[]) {
          << endl;
 }
 
+/**
+ * Entry point.
+ * @param argc  count of command line arguments
+ * @param argv  array of command line arguments
+ * @return      0 on success, 1 otherwise
+ */
 int main(int argc, char* argv[]) {
 
 	if (argc < 8) {
@@ -47,7 +57,7 @@ int main(int argc, char* argv[]) {
 	string outputFileName = "";
 
 	int c;
-	while ((c = getopt (argc, argv, "cdh:i:o:m")) != -1)
+	while ((c = getopt (argc, argv, "cdh:i:o:mw")) != -1)
     
     switch (c) {
     	case 'c':
@@ -75,6 +85,8 @@ int main(int argc, char* argv[]) {
         case 'm':
             model = true;
             break;
+		case 'w':
+			break;
         default:
             help(argv);
 			return 1;
@@ -102,18 +114,5 @@ int main(int argc, char* argv[]) {
             decoder_static(inputFileName, outputFileName, model);
         }
     }
-
-//    u_int8_t value;
-//    int i = 0;
-//    char buf[sizeof(u_int8_t)];
-//    while (inputFileStream.read(buf, sizeof(buf))) {
-//        memcpy(&value, buf, sizeof(value));
-//        cout << value << " ";
-//        i++;
-//        outputFileStream.write(buf, sizeof(buf));
-//    }
-//
-//    cout << endl << "Total count: " << i << endl;
-//
 	return 0;
 }

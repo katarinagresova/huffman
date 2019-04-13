@@ -1,3 +1,10 @@
+/**
+ * Author: Katarina Gresova, xgreso00
+ * Datum: 12.04.2019
+ * Name: file_manipulation.hpp
+ * Description: Functions for I/O operations.
+ */
+
 #ifndef HUFFMAN_FILE_MANIPULATION_H
 #define HUFFMAN_FILE_MANIPULATION_H
 

@@ -1,6 +1,9 @@
-//
-// Created by Katarina Gresova on 11/04/2019.
-//
+/**
+ * Author: Katarina Gresova, xgreso00
+ * Datum: 12.04.2019
+ * Name: huffman_adaptive.hpp
+ * Description: Adaptive Huffman coding.
+ */
 
 #ifndef HUFFMAN_HUFFMAN_ADAPTIVE_H
 #define HUFFMAN_HUFFMAN_ADAPTIVE_H
@@ -12,8 +15,8 @@ void encoder_adaptive(string ifile, string ofile, bool model);
 void decoder_adaptive(string ifile, string ofile, bool model);
 
 struct node {
-    int is_NYT;
-    int is_leaf;
+    bool is_NYT;
+    bool is_leaf;
 
     struct node *parent;
     struct node *left_child;

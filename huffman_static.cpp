@@ -1,3 +1,10 @@
+/**
+ * Author: Katarina Gresova, xgreso00
+ * Datum: 11.04.2019
+ * Name: huffman_static.cpp
+ * Description: Static Huffman coding.
+ */
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -58,13 +65,13 @@ bool get_huf_char(Node_static* root, string s, u_int8_t& c) {
     }
 
     Node_static* curr = root;
-    for (char i : s) {
+    for (int i = 0; i < s.size(); i++) {
         //go to left in the H. tree
-        if (i == '0') {
+        if (s[i] == '0') {
             curr = curr->left;
         }
         //go to right in the H. tree
-        if (i == '1') {
+        if (s[i] == '1') {
             curr = curr->right;
         }
     }
@@ -180,11 +187,11 @@ void encoder_static(string ifile, string ofile, bool model) {
         if (model) {
             value = modeling(value);
         }
-        for (char i : H_table[value]) {
-            if (i == '0') {
+        for (int i = 0; i < H_table[value].size(); i++) {
+            if (H_table[value][i] == '0') {
                 ch = 0;
             }
-            if (i == '1') {
+            if (H_table[value][i] == '1') {
                 ch = 1;
             }
             write_bit(ch, fp_out);
@@ -198,7 +205,7 @@ void encoder_static(string ifile, string ofile, bool model) {
 }
 
 /**
- * Static Huffman dencoder
+ * Static Huffman decoder
  * @param ifile     path to input file
  * @param ofile     path to output file
  * @param model     flag, if model will be used

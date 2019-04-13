@@ -1,5 +1,19 @@
+/**
+ * Author: Katarina Gresova, xgreso00
+ * Datum: 12.04.2019
+ * Name: file_manipulation.cpp
+ * Description: Functions for I/O operations.
+ */
+
 #include "file_manipulation.hpp"
 
+/**
+ * Checks input and output files.
+ * @param ifile     input filename
+ * @param ofile     output filename
+ * @param fp_in     reference to input file
+ * @param fp_out    reference to output file
+ */
 void check_files(string ifile, string ofile, FILE **fp_in, FILE **fp_out) {
     *fp_in = fopen(ifile.c_str(), "rb");
     if (*fp_in == nullptr) {
@@ -24,16 +38,12 @@ void check_files(string ifile, string ofile, FILE **fp_in, FILE **fp_out) {
     rewind(*fp_in);
 }
 
-/* Read the next bit to be read in the biffer and returns it.
- * fp: input file (that will be read in case the buffer limit is reached).
- * buffer: the input buffer, that can be updated in case a read operation if performed in the input file.
- * bufferSize: how many bits there are left to be read in the buffer.
- * fileSize: the filesize (until its next to last byte).
- * readHowManyBitsAtTheEnd: how many bits should be read in the next to last byte.
- * returns: the bit (0 or 1).
+/**
+ * Reads from input file using 8b buffer
+ * @param fp    input file
+ * @return      read 1b
  */
 int readBit(FILE *fp) {
-
     static bool first_read = true;
     static long int file_size = 0;
     static u_int8_t bits_at_the_end = 0;
@@ -67,13 +77,10 @@ int readBit(FILE *fp) {
     return (buffer >> buffer_size) & 1;
 }
 
-/* Reads the next 8 bits to be read and return it as a char.
- * fp: input file (that will be read in case the buffer limit is reached).
- * buffer: the input buffer, that can be updated in case a read operation if performed in the input file.
- * bufferSize: how many bits there are left to be read in the buffer.
- * fileSize: the filesize (until its next to last byte).
- * readHowManyBitsAtTheEnd: how many bits should be read in the next to last byte.
- * returns: the read byte.
+/**
+ * Reads 1 byte from input file
+ * @param fp    input file
+ * @return      read 1 byte
  */
 u_int8_t readByte(FILE *fp) {
     u_int8_t result = 0;
@@ -89,9 +96,9 @@ u_int8_t readByte(FILE *fp) {
 }
 
 /**
- * Adds bit tu 8b buffer and writes it to output file
+ * Writes 1b to output file using 8b buffer
  * @param i         bit to be written, or EOF
- * @param outfile   output file stream
+ * @param fp        output file
  */
 void write_bit(u_int8_t i, FILE *fp) {
     static int bit_pos = 0; //0 to 7 (left to right) on the byte block
@@ -117,6 +124,11 @@ void write_bit(u_int8_t i, FILE *fp) {
     }
 }
 
+/**
+ * Writes 1 byte to output file
+ * @param byte  byte to be written
+ * @param fp    output file
+ */
 void write_byte(u_int8_t byte, FILE *fp) {
     for (int i = 0; i < 8; i++) {
         write_bit((byte >> (7 - i)) & 1, fp);
