@@ -48,18 +48,18 @@ do
 
   # static
 
-  ./huff_codec -c -h static -i ${refPath}original/${filename} -o ${refPath}/coded/static-${filename}
+  c=`./huff_codec -c -h static -i ${refPath}original/${filename} -o ${refPath}/coded/static-${filename} -w 340`
   if [ "$?" != "0" ]
     then echo -e "[${RED}Static   code BAD${NC}]"
     exit
   fi
-  ./huff_codec -d -h static -i ${refPath}/coded/static-${filename} -o ${refPath}/decoded/decode-static-${filename}
+  d=`./huff_codec -d -h static -i ${refPath}/coded/static-${filename} -o ${refPath}/decoded/decode-static-${filename} -w 340`
   if [ "$?" != "0" ]
     then echo -e "[${RED}Static   code BAD${NC}]"
     exit
   fi
 
-  diff ${refPath}original/${filename} ${refPath}decoded/decode-static-${filename} 
+  diff ${refPath}original/${filename} ${refPath}/decoded/decode-static-${filename} 
 
   if [ "$?" == "0" ]
     then
@@ -67,7 +67,7 @@ do
       codeFileSize=$(wc -c <"${refPath}/coded/static-${filename}")
       if [ "$origFileSize" -ne 0 ] 
         then
-          echo -e "[${filename}\t${GREEN}Static      OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: $((100 - (100*$codeFileSize/$origFileSize)))%]"
+          echo -e "[${filename}\t${GREEN}Static      OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: $((100 - (100*$codeFileSize/$origFileSize)))%, ppb: $(((8*$codeFileSize)/$origFileSize)),\tcode: $c,\tdecode: $d\tsum: $((c+d))]"
         else
           echo -e "[${filename}\t${GREEN}Static      OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: 0]"
       fi
@@ -79,96 +79,96 @@ do
 
   # static with model
 
-   ./huff_codec -c -h static -i ${refPath}original/${filename} -o ${refPath}/coded/static-m-${filename} -m
-   if [ "$?" != "0" ]
-     then echo -e "[${RED}Static -m   code BAD${NC}]"
-     exit
-   fi
-   ./huff_codec -d -h static -i ${refPath}/coded/static-m-${filename} -o ${refPath}/decoded/decode-static-m-${filename} -m
-   if [ "$?" != "0" ]
-     then echo -e "[${RED}Static -m   code BAD${NC}]"
-     exit
-   fi
+  c=`./huff_codec -c -h static -i ${refPath}original/${filename} -o ${refPath}/coded/static-m-${filename} -m -w 340`
+  if [ "$?" != "0" ]
+    then echo -e "[${RED}Static -m   code BAD${NC}]"
+    exit
+  fi
+  d=`./huff_codec -d -h static -i ${refPath}/coded/static-m-${filename} -o ${refPath}/decoded/decode-static-m-${filename} -m -w 340`
+  if [ "$?" != "0" ]
+    then echo -e "[${RED}Static -m   code BAD${NC}]"
+    exit
+  fi
 
-   diff ${refPath}original/${filename} ${refPath}decoded/decode-static-m-${filename}
+  diff ${refPath}original/${filename} ${refPath}/decoded/decode-static-m-${filename} 
 
-   if [ "$?" == "0" ]
-     then
-       origFileSize=$(wc -c <"${refPath}original/${filename}")
-       codeFileSize=$(wc -c <"${refPath}/coded/static-m-${filename}")
-       if [ "$origFileSize" -ne 0 ]
-         then
-           echo -e "[${filename}\t${GREEN}Static -m   OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: $((100 - (100*$codeFileSize/$origFileSize)))%]"
-         else
-           echo -e "[${filename}\t${GREEN}Static -m   OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: 0]"
-       fi
-       ((ok++))
-     else
-       echo -e "[${filename}\t${RED}Static -m   BAD${NC}]"
-   fi
-   ((total++))
+  if [ "$?" == "0" ]
+    then
+      origFileSize=$(wc -c <"${refPath}original/${filename}")
+      codeFileSize=$(wc -c <"${refPath}/coded/static-m-${filename}")
+      if [ "$origFileSize" -ne 0 ] 
+        then
+          echo -e "[${filename}\t${GREEN}Static -m   OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: $((100 - (100*$codeFileSize/$origFileSize)))%, ppb: $(((8*$codeFileSize)/$origFileSize)),\tcode: $c,\tdecode: $d\tsum: $((c+d))]"
+        else
+          echo -e "[${filename}\t${GREEN}Static -m   OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: 0]"
+      fi
+      ((ok++))
+    else
+      echo -e "[${filename}\t${RED}Static -m   BAD${NC}]"
+  fi
+  ((total++))
 
-  # # adaptive
+  # adaptive
 
-   ./huff_codec -c -h adaptive -i ${refPath}original/${filename} -o ${refPath}/coded/adaptive-${filename}
-   if [ "$?" != "0" ]
-     then echo -e "[${RED}Adaptive code BAD${NC}]"
-     exit
-   fi
-   ./huff_codec -d -h adaptive -i ${refPath}/coded/adaptive-${filename} -o ${refPath}/decoded/decode-adaptive-${filename}
-   if [ "$?" != "0" ]
-     then echo -e "[${RED}Adaptive code BAD${NC}]"
-     exit
-   fi
+  c=`./huff_codec -c -h adaptive -i ${refPath}original/${filename} -o ${refPath}/coded/adaptive-${filename} -w 340`
+  if [ "$?" != "0" ]
+    then echo -e "[${RED}Adaptive code BAD${NC}]"
+    exit
+  fi
+  d=`./huff_codec -d -h adaptive -i ${refPath}/coded/adaptive-${filename} -o ${refPath}/decoded/decode-adaptive-${filename} -w 340`
+  if [ "$?" != "0" ]
+    then echo -e "[${RED}Adaptive code BAD${NC}]"
+    exit
+  fi
 
-   diff ${refPath}original/${filename} ${refPath}decoded/decode-adaptive-${filename}
+  diff ${refPath}original/${filename} ${refPath}/decoded/decode-adaptive-${filename}
 
-   if [ "$?" == "0" ]
-     then
-       origFileSize=$(wc -c <"${refPath}original/${filename}")
-       codeFileSize=$(wc -c <"${refPath}/coded/adaptive-${filename}")
-       if [ "$origFileSize" -ne 0 ]
-         then
-           echo -e "[${filename}\t${GREEN}Adaptive    OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: $((100 - (100*$codeFileSize/$origFileSize)))%]"
-         else
-           echo -e "[${filename}\t${GREEN}Adaptive    OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: 0]"
-       fi
-       ((ok++))
-     else
-       echo -e "[${filename}\t${RED}Adaptive BAD${NC}]"
-   fi
-   ((total++))
+  if [ "$?" == "0" ]
+    then
+      origFileSize=$(wc -c <"${refPath}original/${filename}")
+      codeFileSize=$(wc -c <"${refPath}/coded/adaptive-${filename}")
+      if [ "$origFileSize" -ne 0 ] 
+        then
+          echo -e "[${filename}\t${GREEN}Adaptive    OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: $((100 - (100*$codeFileSize/$origFileSize)))%, ppb: $(((8*$codeFileSize)/$origFileSize)),\tcode: $c,\tdecode: $d\tsum: $((c+d))]"
+        else
+          echo -e "[${filename}\t${GREEN}Adaptive    OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: 0]"
+      fi
+      ((ok++))
+    else
+      echo -e "[${filename}\t${RED}Adaptive BAD${NC}]"
+  fi
+  ((total++))
 
-  # # adaptive model
+  # adaptive model
 
-   ./huff_codec -c -h adaptive -i ${refPath}original/${filename} -o ${refPath}/coded/adaptive-m-${filename} -m
-   if [ "$?" != "0" ]
-     then echo -e "[${RED}Adaptive -m code BAD${NC}]"
-     exit
-   fi
-   ./huff_codec -d -h adaptive -i ${refPath}/coded/adaptive-m-${filename} -o ${refPath}/decoded/decode-adaptive-m-${filename} -m
-   if [ "$?" != "0" ]
-     then echo -e "[${RED}Adaptive -m code BAD${NC}]"
-     exit
-   fi
+  c=`./huff_codec -c -h adaptive -i ${refPath}original/${filename} -o ${refPath}/coded/adaptive-m-${filename} -m -w 340`
+  if [ "$?" != "0" ]
+    then echo -e "[${RED}Adaptive -m code BAD${NC}]"
+    exit
+  fi
+  d=`./huff_codec -d -h adaptive -i ${refPath}/coded/adaptive-m-${filename} -o ${refPath}/decoded/decode-adaptive-m-${filename} -m`
+  if [ "$?" != "0" ]
+    then echo -e "[${RED}Adaptive -m code BAD${NC}]"
+    exit
+  fi
 
-   diff ${refPath}original/${filename} ${refPath}decoded/decode-adaptive-m-${filename}
+  diff ${refPath}original/${filename} ${refPath}/decoded/decode-adaptive-m-${filename}
 
-   if [ "$?" == "0" ]
-     then
-       origFileSize=$(wc -c <"${refPath}original/${filename}")
-       codeFileSize=$(wc -c <"${refPath}/coded/adaptive-m-${filename}")
-       if [ "$origFileSize" -ne 0 ]
-         then
-           echo -e "[${filename}\t${GREEN}Adaptive -m OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: $((100 - (100*$codeFileSize/$origFileSize)))%]"
-         else
-           echo -e "[${filename}\t${GREEN}Adaptive -m OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: 0]"
-       fi
-       ((ok++))
-     else
-       echo -e "[${filename}\t${RED}Adaptive -m BAD${NC}]"
-   fi
-   echo -e
+  if [ "$?" == "0" ]
+    then
+      origFileSize=$(wc -c <"${refPath}original/${filename}")
+      codeFileSize=$(wc -c <"${refPath}/coded/adaptive-m-${filename}")
+      if [ "$origFileSize" -ne 0 ] 
+        then
+          echo -e "[${filename}\t${GREEN}Adaptive -m OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: $((100 - (100*$codeFileSize/$origFileSize)))%, ppb: $(((8*$codeFileSize)/$origFileSize)),\tcode: $c,\tdecode: $d\tsum: $((c+d))]"
+        else
+          echo -e "[${filename}\t${GREEN}Adaptive -m OK${NC}]\t[origSize: ${origFileSize},\tcodeSize: ${codeFileSize},\tcompression: 0]"
+      fi
+      ((ok++))
+    else
+      echo -e "[${filename}\t${RED}Adaptive -m BAD${NC}]"
+  fi
+  echo -e
 
 done
     

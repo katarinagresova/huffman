@@ -57,7 +57,7 @@ int main(int argc, char* argv[]) {
 	string outputFileName = "";
 
 	int c;
-	while ((c = getopt (argc, argv, "cdh:i:o:mw")) != -1)
+	while ((c = getopt (argc, argv, "cdh:i:o:mw:")) != -1)
     
     switch (c) {
     	case 'c':

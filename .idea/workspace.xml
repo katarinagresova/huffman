@@ -13,19 +13,9 @@
   <component name="ChangeListManager">
     <list default="true" id="48f7c193-f8c8-4d4a-acf4-07889eadfa49" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_manipulation.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/file_manipulation.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_manipulation.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/file_manipulation.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_manipulation.hpp.gch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/huffman_adaptive.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/huffman_adaptive.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huffman_adaptive.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/huffman_adaptive.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huffman_adaptive.hpp.gch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/huffman_static.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/huffman_static.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huffman_static.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/huffman_static.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huffman_static.hpp.gch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kko-testy/testMyProject.sh" beforeDir="false" afterPath="$PROJECT_DIR$/kko-testy/testMyProject.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/model.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/model.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.hpp.gch" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +31,8 @@
       <file leaf-file-name="huffman_adaptive.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/huffman_adaptive.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="5" selection-end-column="3" />
+            <state relative-caret-position="2370">
+              <caret line="158" selection-start-line="158" selection-end-line="158" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -53,7 +43,7 @@
       <file leaf-file-name="huffman_static.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/huffman_static.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2760">
+            <state relative-caret-position="-499">
               <caret line="184" column="16" selection-start-line="184" selection-start-column="16" selection-end-line="184" selection-end-column="16" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -62,38 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="huffman_static.hpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="huffman_static.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/huffman_static.hpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
               <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="model.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="5" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="model.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testMyProject.sh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kko-testy/testMyProject.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2550">
-              <caret line="170" column="2" selection-start-line="170" selection-start-column="2" selection-end-line="170" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -131,11 +94,38 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="5" selection-end-column="3" />
+            <state relative-caret-position="181">
+              <caret line="59" column="48" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="48" />
               <folding>
                 <element signature="e#161#180#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testMyProject.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kko-testy/testMyProject.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="385">
+              <caret line="170" column="2" selection-start-line="170" selection-start-column="2" selection-end-line="170" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Makefile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kko-testy/Makefile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="27" column="104" selection-end-line="50" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Makefile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Makefile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -195,7 +185,6 @@
         <option value="$PROJECT_DIR$/tree.cpp" />
         <option value="$PROJECT_DIR$/queue.hpp" />
         <option value="$PROJECT_DIR$/queue.cpp" />
-        <option value="$PROJECT_DIR$/Makefile" />
         <option value="$PROJECT_DIR$/huffman.hpp" />
         <option value="$PROJECT_DIR$/huffman.cpp" />
         <option value="$PROJECT_DIR$/huffman_adaptive.h" />
@@ -209,7 +198,6 @@
         <option value="$PROJECT_DIR$/kko-testy/file_manipulation.hpp" />
         <option value="$PROJECT_DIR$/kko-testy/Makefile" />
         <option value="$PROJECT_DIR$/kko-testy/testMyProject.sh" />
-        <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/huffman_adaptive.cpp" />
         <option value="$PROJECT_DIR$/model.cpp" />
         <option value="$PROJECT_DIR$/model.hpp" />
@@ -218,6 +206,8 @@
         <option value="$PROJECT_DIR$/file_manipulation.hpp" />
         <option value="$PROJECT_DIR$/file_manipulation.cpp" />
         <option value="$PROJECT_DIR$/huffman_static.cpp" />
+        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/Makefile" />
       </list>
     </option>
   </component>
@@ -268,10 +258,11 @@
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/kko-testy/tests/files/original/hd08.raw" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/kko-testy" />
       <recent name="$PROJECT_DIR$" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -317,12 +308,12 @@
       <workItem from="1554980902992" duration="16720000" />
       <workItem from="1555015584887" duration="98000" />
       <workItem from="1555088930286" duration="9540000" />
-      <workItem from="1555148449401" duration="4303000" />
+      <workItem from="1555148449401" duration="5399000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67084000" />
+    <option name="totallyTimeSpent" value="68180000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -495,13 +486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/istream">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -559,30 +543,6 @@
     <entry file="file://$PROJECT_DIR$/kko-testy/tests/files/decoded/decode-adaptive-hd08.raw">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/kko-testy/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="27" column="104" selection-start-line="27" selection-start-column="104" selection-end-line="27" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kko-testy/testMyProject.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2550">
-          <caret line="170" column="2" selection-start-line="170" selection-start-column="2" selection-end-line="170" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="5" selection-end-column="3" />
-          <folding>
-            <element signature="e#161#180#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -594,23 +554,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/huffman_adaptive.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="5" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/huffman_adaptive.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -631,9 +574,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/huffman_static.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/huffman_static.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2760">
+        <state relative-caret-position="-499">
           <caret line="184" column="16" selection-start-line="184" selection-start-column="16" selection-end-line="184" selection-end-column="16" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
@@ -641,10 +591,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/huffman_static.hpp">
+    <entry file="file://$PROJECT_DIR$/huffman_adaptive.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/huffman_adaptive.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2370">
+          <caret line="158" selection-start-line="158" selection-end-line="158" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="59" column="48" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="48" />
+          <folding>
+            <element signature="e#161#180#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kko-testy/testMyProject.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="170" column="2" selection-start-line="170" selection-start-column="2" selection-end-line="170" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kko-testy/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="27" column="104" selection-end-line="50" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
         </state>
       </provider>
     </entry>
