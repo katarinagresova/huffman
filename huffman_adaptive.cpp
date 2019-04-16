@@ -225,6 +225,7 @@ void decoder_adaptive(string ifile, string ofile, bool model) {
         Node *currNode = root;
 
         int endOfFile = 0;
+        // not leaf node and not end of file
         while (!(currNode->left_child == nullptr && currNode->right_child == nullptr) && !endOfFile) {
             int bit = readBit(fp_in);
             if (bit == 0) {
@@ -249,7 +250,7 @@ void decoder_adaptive(string ifile, string ofile, bool model) {
         if (model) {
             c = demodeling(c);
         }
-        fwrite(&c, sizeof(unsigned char), 1, fp_out);
+        fwrite(&c, sizeof(u_int8_t), 1, fp_out);
         updateTree(currNode, root);
     }
 
