@@ -126,8 +126,9 @@ priority_queue<Node_static*, vector<Node_static*>, comp>* createHuffmanTree(unsi
  * @param huffmanCode   map to store Huffman code for each character
  */
 void storeHuffmanCodes(Node_static* root, string str, map<u_int8_t, string> &huffmanCode) {
-    if (root == nullptr)
+    if (root == nullptr) {
         return;
+    }
 
     // found a leaf node
     if (!root->left && !root->right) {
@@ -233,7 +234,7 @@ void decoder_static(string ifile, string ofile, bool model) {
     //find out the chars and write into the output file
     string st;
     u_int8_t ch2;
-    unsigned int total_chars=(*root).freq;
+    unsigned int total_chars = (*root).freq;
     while (total_chars > 0) { //continue until no char left to decode
 
         st=""; //current Huffman string

@@ -8,6 +8,20 @@
 #include "file_manipulation.hpp"
 
 /**
+ * Checks if file is empty.
+ * Borrowed from stackoverflow answer: https://stackoverflow.com/questions/40763984/how-can-i-know-text-file-is-empty-or-notin-c
+ * @param fp    file to check
+ * @return      1 if file is empty, 0 otherwise
+ */
+int is_empty_file(FILE *fp) {
+    int c = getc(fp);
+    if (c == EOF)
+        return 1;
+    ungetc(c, fp);
+    return 0;
+}
+
+/**
  * Checks input and output files.
  * @param ifile     input filename
  * @param ofile     output filename
@@ -29,13 +43,11 @@ void check_files(string ifile, string ofile, FILE **fp_in, FILE **fp_out) {
     }
 
     //input file was empty - do empty output and finish
-    fseek(*fp_in, 0, SEEK_END);
-    if(ftell(*fp_in) == 0) {
+    if (is_empty_file(*fp_in)) {
         fclose(*fp_in);
         fclose(*fp_out);
         exit(0);
     }
-    rewind(*fp_in);
 }
 
 /**

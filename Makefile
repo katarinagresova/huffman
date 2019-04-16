@@ -16,10 +16,10 @@ huffman_adaptive.o:  huffman_adaptive.cpp
 file_manipulation.o:  file_manipulation.cpp
 	$(CC) $(CFLAGS) -c  file_manipulation.cpp file_manipulation.hpp
 
-model.o:  ../model.cpp
+model.o:  model.cpp
 	$(CC) $(CFLAGS) -c model.cpp model.hpp
 
-main.o:  ../main.cpp
+main.o:  main.cpp
 	$(CC) $(CFLAGS) -c main.cpp
 
 clean:

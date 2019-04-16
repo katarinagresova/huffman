@@ -15,9 +15,6 @@ void encoder_adaptive(string ifile, string ofile, bool model);
 void decoder_adaptive(string ifile, string ofile, bool model);
 
 struct node {
-    bool is_NYT;
-    bool is_leaf;
-
     struct node *parent;
     struct node *left_child;
     struct node *right_child;

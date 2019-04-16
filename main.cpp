@@ -11,10 +11,13 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <fstream>
+#include <chrono>
 #include "huffman_static.hpp"
 #include "huffman_adaptive.hpp"
 
 using namespace std;
+
+#define MEASURE 0
 
 /**
  * Prints help
@@ -101,6 +104,8 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 
+
+    auto start = chrono::steady_clock::now();
 	if (huffmanAdaptive) {
         if (compress) {
             encoder_adaptive(inputFileName, outputFileName, model);
@@ -114,5 +119,9 @@ int main(int argc, char* argv[]) {
             decoder_static(inputFileName, outputFileName, model);
         }
     }
-	return 0;
+    if (MEASURE) {
+        auto end = chrono::steady_clock::now();
+        cout << chrono::duration_cast<chrono::milliseconds>(end - start).count() << endl;
+    }
+    return 0;
 }

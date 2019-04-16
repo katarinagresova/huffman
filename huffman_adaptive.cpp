@@ -21,8 +21,6 @@
  */
 Node* createTree() {
     Node *tree = new Node();
-    tree->is_NYT = 1;
-    tree->is_leaf = 1;
 
     tree->parent = nullptr;
     tree->left_child = nullptr;
@@ -53,16 +51,13 @@ stack<u_int8_t > codeOfNode(Node *node) {
 /**
  *
  * @param parent    parent of new node
- * @param is_NYT    flag, if new node is NYT node
  * @param symbol    symbol of new node
  * @param weight    weight of new node
  * @param order     order of new node
  * @return          pointer to new node
  */
-Node* addChild(Node *parent, bool is_NYT, u_int8_t symbol, int weight, int order) {
+Node* addChild(Node *parent, u_int8_t symbol, int weight, int order) {
     Node *node = new Node();
-    node->is_NYT = is_NYT;
-    node->is_leaf = true;
     node->parent = parent;
     node->left_child = nullptr;
     node->right_child = nullptr;
@@ -80,12 +75,10 @@ Node* addChild(Node *parent, bool is_NYT, u_int8_t symbol, int weight, int order
  * @return              parent of node with new symbol
  */
 Node* addSymbol(u_int8_t symbol, Node **NYT_node, map<u_int8_t, Node*> &symbols) {
-    Node *leftNode = addChild(*NYT_node, true, 0, 0, (*NYT_node)->order - 2);
-    Node *rightNode = addChild(*NYT_node, false, symbol, 1, (*NYT_node)->order - 1);
+    Node *leftNode = addChild(*NYT_node, 0, 0, (*NYT_node)->order - 2);
+    Node *rightNode = addChild(*NYT_node, symbol, 1, (*NYT_node)->order - 1);
 
     Node *previous_NYT_node = *NYT_node;
-    (*NYT_node)->is_NYT = 0;
-    (*NYT_node)->is_leaf = 0;
     (*NYT_node)->left_child = leftNode;
     (*NYT_node)->right_child = rightNode;
 
@@ -104,7 +97,7 @@ Node* addSymbol(u_int8_t symbol, Node **NYT_node, map<u_int8_t, Node*> &symbols)
 Node* findReplaceNode(Node *currMax, Node *root) {
     Node *result = currMax;
 
-    if (root->weight > result->weight && !root->is_leaf) {
+    if (root->weight > result->weight && !(root->left_child == nullptr && root->right_child == nullptr)) {
         Node *greatestLeft = findReplaceNode(result, root->left_child);
         if (greatestLeft) result = greatestLeft;
 
@@ -176,7 +169,7 @@ void encoder_adaptive(string ifile, string ofile, bool model) {
     check_files(ifile, ofile, &fp_in, &fp_out);
 
     Node *root = createTree();
-    Node *zeroNode = root;
+    Node *NYT_node = root;
     map<u_int8_t , Node*> symbols;
 
     u_int8_t currByte;
@@ -195,14 +188,14 @@ void encoder_adaptive(string ifile, string ofile, bool model) {
 
             updateTree(symbolTree, root);
         } else {
-            stack<u_int8_t> NYT_code = codeOfNode(zeroNode);
+            stack<u_int8_t> NYT_code = codeOfNode(NYT_node);
             while(!NYT_code.empty()) {
                 write_bit(NYT_code.top(), fp_out);
                 NYT_code.pop();
             }
             write_byte(currByte, fp_out);
 
-            Node *newNode = addSymbol(currByte, &zeroNode, symbols);
+            Node *newNode = addSymbol(currByte, &NYT_node, symbols);
             updateTree(newNode, root);
         }
     }
@@ -225,14 +218,14 @@ void decoder_adaptive(string ifile, string ofile, bool model) {
     check_files(ifile, ofile, &fp_in, &fp_out);
 
     Node *root = createTree();
-    Node *zeroNode = root;
+    Node *NYT_node = root;
     map<u_int8_t , Node*> symbols;
 
     while (!feof(fp_in)) {
         Node *currNode = root;
 
         int endOfFile = 0;
-        while (!currNode->is_leaf && !endOfFile) {
+        while (!(currNode->left_child == nullptr && currNode->right_child == nullptr) && !endOfFile) {
             int bit = readBit(fp_in);
             if (bit == 0) {
                 currNode = currNode->left_child;
@@ -246,9 +239,9 @@ void decoder_adaptive(string ifile, string ofile, bool model) {
         if (endOfFile) break;
 
         u_int8_t c;
-        if (currNode->is_NYT) {
+        if (currNode == NYT_node) {
             c = readByte(fp_in);
-            currNode = addSymbol(c, &zeroNode, symbols);
+            currNode = addSymbol(c, &NYT_node, symbols);
         } else {
             c = currNode->symbol;
         }
